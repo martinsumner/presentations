@@ -1,0 +1,308 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Spine II - An Overview</title>
+
+		<meta name="description" content="A walk-through of how The Big NHS Computer was replaced">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+				<h2>The Big NHS Computer</h2>
+				<p>The Prime Minister said ..</p>
+				<blockquote cite="http://www.independent.co.uk/voices/commentators/oliver-wright-the-potential-was-huge-but-so-were-the-problems-2330925.html">
+                    &ldquo;The possibilities are enormous if we can get this right&rdquo;
+                </blockquote>
+				</section>
+				<section>
+					<h2>Tonight I intend to ...</h2>
+					<p>Tell a (long) story ... as fast as I can</p>
+					<p>Focus on the operations part of the story</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/spine2_devops.html#/</small></p>
+				</section>
+
+				<section>
+					<p>See Wikipedia </p>
+					<p><a href="https://en.wikipedia.org/wiki/List_of_failed_and_overbudget_custom_software_projects#Permanent_failures" target="_blank">List of failed and overbudget custom software projects - Permanent Failures</a>
+					</p>
+					<img width="1200" height="200" data-src="images/wikipedia.png" alt="Wikipedia Screenshot"/>
+				</section>
+				<section>
+					<p>What were we attempting to build?</p>
+					<img width="500" height="500" data-src="images/first-death-star.png" alt="The Death Star">
+				</section>
+				<section>
+					<h2>The Spine Part - The supplier speaks ...</h2>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;It has made transformational healthcare applications available to approximately 1.3 million NHS healthcare staff across England, providing care to circa 50 million UK citizens.&rdquo;
+                	</blockquote>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;20-plus customised NHS Spine applications ... combined cutting edge technologies to meet the demanding service level agreements and response times required &rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<h2>More of their own words</h2>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;The contract was (and continues to be) one of the largest IT programmes in the world, consuming over 15,000 man-years of effort to date ... Over 3,000 servers are hosted and supported&rdquo;
+                	</blockquote>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;(The delivery) methodology is now an internationally recognised standard for complex software development programme delivery&rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<h2>What does this kind of success look like?</h2>
+					<p align="left">Spine can release with <strong>£30m</strong> in transition costs alone</p>
+					<p align="left">It costs over <strong>£50m</strong> per annum to keep the lights on</p>
+					<p align="left">Around <strong>50%</strong> of the original business case met</p>
+					<p align="left">The system is <strong>stable</strong> when <strong>untouched</strong></p>
+				</section>
+				<section>
+					<blockquote cite="https://github.com/GovernmentCommunicationsHeadquarters/BoilingFrogs/blob/master/GCHQ_Boiling_Frogs.pdf">
+                    &ldquo;They shouldn't build these death stars any more.  They keep getting blown up&rdquo;
+                	</blockquote>
+					<img width="500" height="500" data-src="images/death-star-2.jpg" alt="The Death Star">
+				</section>
+				
+				<section data-background="#A3C2FF">
+					<h2>How did our rebel alliance approach the problem?</h2>
+					<p align="left">Making predictions is hard ... especially about the future</p>
+					<p align="left">If the answer is big and expensive ... re-frame the question</p>
+					<p align="left">Take responsibility ... no other &ldquo;who&rdquo; to blame</p>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>What did/does it cost?</h2>
+					<p>Took <strong>100 man years</strong> from inception to 1-years service</p>
+					<p>Requires just over <strong>100 commodity 1RU servers</strong> in live</p>
+					<p>Release costs are <strong>&lt 0.1%</strong> of previous release costs</p>
+					<p><strong>90%</strong> reduction in operating costs</p>
+					<p>Total running team of <strong>30</strong> people supporting and ...</p>
+					<p>... Managing more than <strong>£10m</strong> pa of change backlog</p>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Does it work?</h2>
+					<p>(Nearly) like-for-like functional replacement ...</p>
+					<p><strong>99.999%</strong> available since go live</p>
+					<p>Supports over <strong>300</strong> message interactions, eight UI applications</p>
+					<p><strong>41.3M</strong> messages a day<p>
+					<p>Provides accesss to <strong>1.5bn</strong> records and documents</p>
+					<p>The NHS waits more than <strong>800 working days less</strong> each day</p>
+				</section>
+				
+				<section>
+					<p>Ops conversations from inside Death Star 1</p>
+					<img width="700" height="500" data-src="images/stormtrooper-despair.jpg" alt="Stormtrooper Despair">
+				</section>
+				<section>
+					<h2>Network Down</h2>
+					<blockquote align="left">
+                    &ldquo;We've spent an hour troubleshooting DNS - but it turns out the network is down&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;Aren't they resilient links?&rdquo;
+						</font>
+                	</blockquote>
+					<blockquote align="left">
+                    &ldquo;The standby failed three weeks ago&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;And nobody fixed it?&rdquo;
+						</font>
+                	</blockquote>
+					<blockquote align="left">
+                    &ldquo;It was only a standby&rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<h2>Storage Down</h2>
+					<blockquote align="left">
+                    &ldquo;Since the SAN failed on Friday at 18:05 we've had the best experts in the world crawling over it too understand why - and they can't find anything wrong&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;What about this error log that's been raised 360,000 times since 18:05 Friday?&rdquo;
+						</font>
+                	</blockquote>
+					<blockquote align="left">
+                    &ldquo;Oh ... that might be something&rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<h2>Half a brain is dangerous</h2>
+					<blockquote align="left">
+                    &ldquo;The server won't start - listener is busy.  Must be the load-balancer keepalive.  Disable it.&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;WTF? See, makes no difference&rdquo;
+						</font>
+                	</blockquote>
+					<blockquote align="left">
+                    &ldquo;Made no difference - unconfigure it.&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;WTF? See, makes no difference&rdquo;
+						</font>
+                	</blockquote>
+					<blockquote align="left">
+                    &ldquo;Made no difference - reboot the load-balancer, erase the config and start again.&rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<h2>Big problems need big action</h2>
+					<blockquote align="left">
+                    &ldquo;The CRL is massive why are you sending it over the network 60 times per second, just to confirm which CRL you've checked?&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;Fixing this is unnecessary - we're re-architecting the whole system as it isn't reliable and doesn't perform&rdquo;
+						</font>
+                	</blockquote>
+				</section>
+				<section>
+					<h2>Oh, you used that option</h2>
+					<blockquote align="left">
+                    &ldquo;Ah yes, turning that option on may have a bug which causes any failure to propagate throughout the cluster failing every single node&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;Perhaps knowing that <strong>before</strong> everyone had lost their jobs would have been helpful&rdquo;
+						</font>
+                	</blockquote>
+				</section>
+				<section>
+					<h2>But telling you that isn't in my interest</h2>
+					<blockquote align="left">
+                    &ldquo;We don't know why the database slowed down, can we view the stats from the SAN&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;Where's your proof its a SAN issue?&rdquo;
+						</font>
+                	</blockquote>
+					<blockquote align="left">
+                    &ldquo;I have no proof&rdquo;
+                	</blockquote>
+					<blockquote align="right">
+						<font color="#FFFF66">
+                    &ldquo;No proof no stats&rdquo;
+						</font>
+                	</blockquote>
+				</section>
+				
+				
+				<section data-background="#E6E68A">
+					<h2>Operations Learning Applied to Spine 2</h2>
+				</section>
+				<section data-background="#E6E68A">
+					<h2>You build it, you run it - Learning is Everything</h2>
+					<p>If you run away from running things - you shouldn't decide anything</p>
+				</section>
+				<section data-background="#E6E68A">
+					<h2>Engineer aspiration - Systems Thinker and SRE</h2>
+					<blockquote cite="https://en.wikipedia.org/wiki/No_Silver_Bullet">
+                    <p>&ldquo;Whereas the difference between poor conceptual designs and good ones may lie in the soundness of design method, the difference between good designs and great ones surely does not.</p>
+					<p>Great designs come from great designers.</p>
+					<p>... very best designers produce structures that are faster, smaller, simpler, cleaner, and produced with less effort. &rdquo;</p>
+                	</blockquote>
+					<p><small>Fred Brooks, No Silver Bullet, 1986</small></p>
+				</section>
+				<section data-background="#E6E68A">
+					<h2>Logs and Automation</h2>
+					<p>Use the logs, practice using the logs</p>
+					<p>Unify the view of system in one tool</p>
+					<p>Forsake speed in development</p>
+					<p>See detail ... act on detail</p>
+				</section>
+				<section data-background="#E6E68A">
+					<h2>Getting away from failure</h2>
+					<blockquote cite="http://research.microsoft.com/pubs/191008/FailureRecoveryBeEvil.pdf"><p>&ldquo; ... failure recovery can cause more problems than it solves, and so must be engineered explicitly according to a <strong>do no harm</strong> requirement&rdquo;</p></blockquote>
+				</section>
+				<section data-background="#E6E68A">
+					<h2>Use Building Blocks not Magic Boxes</h2>
+					<blockquote>&ldquo;Anyways, the secret is, always fix their attention <strong>away</strong> from where the slippery stuff's going on. That's the first law of magic, Specs. Misdirection. Never forget it.&rdquo;</blockquote>
+					<p><small>Donna Tartt, 2013</small></p>
+				</section>
+				<section data-background="#E6E68A">
+					<h2>Monolith First</h2>
+					<p>Finding the simplest path to most destinations</p>
+				</section>
+				
+				<section data-background="#A3C2FF">
+					<h2>In conclusion</h2>
+					<p align="left">Government IT need not be all bad</p>
+					<p align="left">Radical change is possible</p>
+					<p align="left">DevOps means something really important to us</p>
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
