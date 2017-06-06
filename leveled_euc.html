@@ -95,9 +95,6 @@
 					<p align="left">Riak doesn't always need to know the value</p>
 				</section>
 				<section data-background="#E6E68A">
-					<img width="1000" height="650" data-src="images/leveldb_intro.png" alt="LevelDB Intro"/>
-				</section>
-				<section data-background="#E6E68A">
 					<h2>Leveled - The Key Changes</h2>
 					<p align="left">Make the nursery log a permanent journal of key and values</p>
 					<p align="left">Roll <b>only</b> the Keys and Metadata into the merge tree</p>
@@ -113,7 +110,10 @@
 					<p align="left"><b>Clerks</b> - support Inker and Penciller with background tasks</p>
 				</section>
 				<section data-background="#E6E68A">
-					<img width="1000" height="650" data-src="images/leveled_intro.png" alt="Leveled Intro"/>
+					<img width="1000" height="650" data-src="images/leveldb_intro.png" alt="LevelDB Intro"/>
+				</section>
+				<section data-background="#E6E68A">
+					<img width="1000" height="650" data-src="images/leveled_overview.png" alt="Leveled Intro"/>
 				</section>
 
 				<section data-background="#E6E68A">
@@ -125,7 +125,7 @@
 					<p align="left">Other journal files are immutable until replacement</p>
 				</section>
 				<section data-background="#E6E68A">
-					<img width="1000" height="650" data-src="images/inker.png" alt="Inker"/>
+					<img width="1000" height="650" data-src="images/leveled_inker_overview.png" alt="Inker"/>
 				</section>
 				<section data-background="#E6E68A">
 					<h2>Leveled - The Penciller and the Ledger</h2>
@@ -135,9 +135,7 @@
 					<p align="left">Each level consists of immutable SST files in key order</p>
 					<p align="left">Each level has a maximum number of files - excess triggers merge</p>
 				</section>
-				<section data-background="#E6E68A">
-					<img width="1000" height="650" data-src="images/penciller.png" alt="Penciller"/>
-				</section>
+
 				<section data-background="#E6E68A">
 					<h2>Leveled - Operations</h2>
 					<p align="left"><b>PUT</b> - Inker commits to Journal, Bookie caches change to Ledger</p>
@@ -146,6 +144,9 @@
 					<p align="left"><b>INDEX</b> - Additional key/metadata changes in Ledger</p>
 					<p align="left"><b>FOLD</b> - Efficient in key-ordered ledger through clones of Penciller</p>
 					<p align="left"><b>CLONE</b>  - By manifest copy, with delete_pending file state, allowing reads in parallel</p>
+				</section>
+				<section data-background="#E6E68A">
+					<img width="1000" height="650" data-src="images/leveled_headvsget_overview.png" alt="Penciller"/>
 				</section>
 				<section data-background="#A3C2FF">
 					<img width="1000" height="650" data-src="images/wip.jpg" alt="Work In Progress"/>
@@ -192,10 +193,11 @@
 					<p align="left">Pleasantly surprised by the throughput comparison</p>
 					<p align="left">Actors made more sense to me than objects</p>
 					<p align="left">Relevance increased by support issues with Riak</p>
+					<p align="left">Now progressing to pre-production testing on Spine</p>
 				</section>
 
 				<section data-background="#A3C2FF">
-					<h2>Ta</h2>
+					<img width="800" height="600" data-src="images/thank-you.jpg" alt="Comparison with 2i"/>
 				</section>
 			</div>
 
