@@ -45,27 +45,28 @@
 				</section>
 
 				<section>
-					<h2>My journey towrds Erlang - 2004</h2>
+					<h2>My journey towards Erlang - 2004</h2>
 					<p align="left">I'm the network guy on a huge health database project</p>
+					<p align="left">Every problem looks like a network problem ...</p>
 					<p align="left">Started fixing things in the application ...</p>
 					<p align="right">... the business decided to fix things through process/management</p>
-					<p align="left">How should we fix these things?</p>
 				</section>
 
 				<section>
-					<h2>My journey towrds Erlang - 2010</h2>
-					<p align="left">I'm part of team looking to "procure" a replacement</p>
+					<h2>My journey towards Erlang - 2011</h2>
 					<p align="left">Spine now had:</p>
 					<ul>
 					<li>more than 3000 servers</li>
 					<li>more than 18 thousand people years behind it</li>
 					<li>more than £30m in change costs ... per change</li>
+					<li>total bill has passed £1bn </li>
 					</ul>
-					<p align="left">Can we build this better ourselves?</p>
+					<p align="left">Is this the genuine cost of availability?</p>
+					<p align="left">Lets replace it with a fundamentally different approach</p>
 				</section>
 
 				<section>
-					<h2>My journey towrds Erlang - 2014</h2>
+					<h2>My journey towards Erlang - 2014</h2>
 					<p align="left">Spine II Core goes live!</p>
 					<p align="left">Better than five nines availability since go-live</p>
 					<p align="left">Less than hundred people years to go-live</p>
@@ -80,35 +81,29 @@
 				</section>
 
 				<section data-background="#E6E68A">
-					<h2>Leveled - Why?</h2>
+					<h2>Why An Erlang Key-Value Store?</h2>
 					<p align="left">Riak has been a rock - durability and availability</p>
+					<ul>
+					<li>I know it, and know of problems with it, and have a path to production</li>
+					</ul>
 					<p align="left">Pluggable backends, but no fully-featured Erlang backend</p>
-					<p align="left">Can lost "raw" performance be compensated?</p>
-					<p align="left">A practical experiment in LSM-tree trade-offs ...</p>
-					<p align="right">... See also WiscKey, Badger</p>
+					<ul>
+					<li>Except for HanoiDB, so someone else thought this was worth doing</li>
+					</ul>
+				</section>
+
+				<section data-background="#E6E68A">
+				<img width="1200" height="450" data-src="images/LSM_paper.png" alt="LSM Paper Diagram"/>
 				</section>
 
 				<section data-background="#E6E68A">
 					<h2>Leveled - The Hypothesis</h2>
-					<p align="left">Disk I/O is an unpredictable bottleneck</p>
-					<p align="left">Be non-generic, focus on specific context: e.g. larger objects; many stores per server</p>
-					<p align="left">Riak doesn't always need to know the value</p>
+					<p align="left">Disk I/O is an unpredictable bottleneck -> split VALUE</p>
+					<p align="right">... See also WiscKey, Badger</p>
+					<p align="left">Riak doesn't always need to know the value -> HEAD</p>
+					<p align="left">Store behaviour may differ by object -> TAG</p>
 				</section>
-				<section data-background="#E6E68A">
-					<h2>Leveled - The Key Changes</h2>
-					<p align="left">Make the nursery log a permanent journal of key and values</p>
-					<p align="left">Roll <b>only</b> the Keys and Metadata into the merge tree</p>
-					<p align="left">In-memory state in small buffers, bloom filters and fadvise</p>
-					<p align="left">Support HEAD requests, and metadata folds</p>
-					<p align="left">Objects can be PUT with TAGs where TAGs define behaviour</p>
-				</section>
-				<section data-background="#E6E68A">
-					<h2>Leveled - The Actors</h2>
-					<p align="left"><b>Bookie</b> - marshalls requests at the front</p>
-					<p align="left"><b>Inker</b> - keeps permanent journal of keys and values</p>
-					<p align="left"><b>Penciller</b> - manages merge tree (ledger) of keys and metadata</p>
-					<p align="left"><b>Clerks</b> - support Inker and Penciller with background tasks</p>
-				</section>
+
 				<section data-background="#E6E68A">
 					<img width="1000" height="650" data-src="images/leveldb_intro.png" alt="LevelDB Intro"/>
 				</section>
@@ -116,6 +111,17 @@
 					<img width="1000" height="650" data-src="images/leveled_overview.png" alt="Leveled Intro"/>
 				</section>
 
+				<!--
+				<section data-background="#E6E68A">
+					<h2>Leveled - The Actors</h2>
+					<p align="left"><b>Bookie</b> - marshalls requests at the front</p>
+					<p align="left"><b>Inker</b> - keeps permanent journal of keys and values</p>
+					<p align="left"><b>Penciller</b> - manages merge tree (ledger) of keys and metadata</p>
+					<p align="left"><b>Clerks</b> - support Inker and Penciller with background tasks</p>
+				</section>
+				-->
+
+				<!--
 				<section data-background="#E6E68A">
 					<h2>Leveled - The Inker and the Journal</h2>
 					<p align="left">The journal is a series of (DJ Bernstein) CDB files (as FSMs)</p>
@@ -124,9 +130,14 @@
 					<p align="left">Active journal file is mutable by append</p>
 					<p align="left">Other journal files are immutable until replacement</p>
 				</section>
+				-->
+
+				<!--
 				<section data-background="#E6E68A">
 					<img width="1000" height="650" data-src="images/leveled_inker_overview.png" alt="Inker"/>
 				</section>
+				-->
+				<!--
 				<section data-background="#E6E68A">
 					<h2>Leveled - The Penciller and the Ledger</h2>
 					<p align="left">The <b>Bookie</b> pushes lists of key/metadata in chunks</p>
@@ -135,6 +146,7 @@
 					<p align="left">Each level consists of immutable SST files in key order</p>
 					<p align="left">Each level has a maximum number of files - excess triggers merge</p>
 				</section>
+				-->
 
 				<section data-background="#E6E68A">
 					<h2>Leveled - Operations</h2>
@@ -174,7 +186,7 @@
 					</ul>
 				</section>
 				<section data-background="#A3C2FF">
-					<img width="1600" height="600" data-src="images/ed_vs_db_compare.png" alt="Comparison with 2i"/>
+					<img width="1600" height="500" data-src="images/ed_vs_db_compare.png" alt="Comparison with 2i"/>
 				</section>
 				<section data-background="#A3C2FF">
 					<h2>Leveled - The Hard Bits</h2>
