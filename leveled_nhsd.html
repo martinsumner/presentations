@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Leveled</title>
+
+		<meta name="description" content="An overview of the Leveled Key/Value Store">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+				<img width="450" height="600" data-src="images/ascot6201.jpg" alt="Bookmaker"/>
+				<p>http://martinsumner.github.io/presentations/leveled_nhsd#/</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Why an Erlang project?</h2>
+					<p align="left">Started looking post 2005</p>
+					<p align="left">Spine II borrows from Erlang/OTP</p>
+					<p align="left">WhatsApp, SimpleDB, Heroku, Discord, Pinterest</p>
+				</section>
+
+
+				<section data-background="#E6E68A">
+					<h2>Why a Key/Value store?</h2>
+					<p align="left">Interest in the trade-offs of the LSM paper</p>
+					<p align="left">Difficult experience trying to unpick LevelDB</p>
+					<p align="left">Search for Riak optimisation - especially wrt repitition</p>
+				</section>
+
+				<section data-background="#E6E68A">
+				<img width="1200" height="450" data-src="images/LSM_paper.png" alt="LSM Paper Diagram"/>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Leveled - The Hypothesis</h2>
+					<p align="left">Disk I/O is an unpredictable bottleneck -> split VALUE</p>
+					<p align="right">... See also WiscKey, Badger</p>
+					<p align="left">Riak doesn't always need to know the value -> HEAD</p>
+					<p align="left">Store behaviour may differ by object -> TAG</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<img width="1000" height="650" data-src="images/leveldb_intro.png" alt="LevelDB Intro"/>
+				</section>
+				<section data-background="#E6E68A">
+					<img width="1000" height="650" data-src="images/leveled_overview.png" alt="Leveled Intro"/>
+				</section>
+
+				<!--
+				<section data-background="#E6E68A">
+					<h2>Leveled - The Actors</h2>
+					<p align="left"><b>Bookie</b> - marshalls requests at the front</p>
+					<p align="left"><b>Inker</b> - keeps permanent journal of keys and values</p>
+					<p align="left"><b>Penciller</b> - manages merge tree (ledger) of keys and metadata</p>
+					<p align="left"><b>Clerks</b> - support Inker and Penciller with background tasks</p>
+				</section>
+				-->
+
+				<!--
+				<section data-background="#E6E68A">
+					<h2>Leveled - The Inker and the Journal</h2>
+					<p align="left">The journal is a series of (DJ Bernstein) CDB files (as FSMs)</p>
+					<p align="left">The Inker has a manifest of sequence numbers -> FSMs -> Files</p>
+					<p align="left">The Inker has a Clerk to help with compaction</p>
+					<p align="left">Active journal file is mutable by append</p>
+					<p align="left">Other journal files are immutable until replacement</p>
+				</section>
+				-->
+
+				<!--
+				<section data-background="#E6E68A">
+					<img width="1000" height="650" data-src="images/leveled_inker_overview.png" alt="Inker"/>
+				</section>
+				-->
+				<!--
+				<section data-background="#E6E68A">
+					<h2>Leveled - The Penciller and the Ledger</h2>
+					<p align="left">The <b>Bookie</b> pushes lists of key/metadata in chunks</p>
+					<p align="left">The <b>Penciller</b> stacks recent chunks in memory, with hash-based index</p>
+					<p align="left">When in-memory count exceeds size of a sst file - persist and flush</p>
+					<p align="left">Each level consists of immutable SST files in key order</p>
+					<p align="left">Each level has a maximum number of files - excess triggers merge</p>
+				</section>
+				-->
+
+				<section data-background="#E6E68A">
+					<h2>Leveled - Operations</h2>
+					<p align="left"><b>PUT</b> - Inker commits to Journal, Bookie caches change to Ledger</p>
+					<p align="left"><b>GET</b> - Penciller fetches SQN, Inker fetches value</p>
+					<p align="left"><b>HEAD</b> - Penciller fetches metadata from Ledger</p>
+					<p align="left"><b>INDEX</b> - Additional key/metadata changes in Ledger</p>
+					<p align="left"><b>FOLD</b> - Efficient in key-ordered ledger through clones of Penciller</p>
+					<p align="left"><b>CLONE</b>  - By manifest copy, with delete_pending file state, allowing reads in parallel</p>
+				</section>
+				<section data-background="#E6E68A">
+					<img width="1000" height="650" data-src="images/leveled_headvsget_overview.png" alt="Penciller"/>
+				</section>
+				<section data-background="#A3C2FF">
+					<img width="1000" height="650" data-src="images/wip.jpg" alt="Work In Progress"/>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Leveled - Status</h2>
+					<p align="left">Functionally complete backend</p>
+					<p align="left">Initial integration testing into Riak</p>
+					<p align="left">Four months of cloud-based volume tests with improvements</p>
+					<p align="left">Good ct/eunit coverage, plus initial propery-based testing</p>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Leveled - Volume tests</h2>
+					<p align="left">Significant throughput improvements where disk I/O is the dominant constraint</p>
+					<ul>
+						<li>With sync enabled (flushing each and every write)</li>
+						<li>With spinning disk drives not solid-state drives</li>
+					</ul>
+					<p align="left">Focused on testing without sync on SSD since</p>
+					<ul>
+						<li>Throughput advantage at > 4KB values</li>
+						<li>Advantage increases with value size</li>
+						<li>Lower mean PUT times, higher median GET times</li>
+						<li>Dramatic reduction in tail latency and volatility</li>
+					</ul>
+				</section>
+				<section data-background="#A3C2FF">
+					<img width="1600" height="500" data-src="images/Variable10KB_withLK.png" alt="Comparison with variable object sizes"/>
+				</section>
+				<section data-background="#A3C2FF">
+					<img width="1600" height="500" data-src="images/Fixed6KB_withLK.png" alt="Comparison with fixed 6KB object sizes"/>
+				</section>
+				<section data-background="#A3C2FF">
+					<img width="1600" height="500" data-src="images/ed_vs_db_compare.png" alt="Comparison with 2i"/>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Leveled - The Hard Bits</h2>
+					<p align="left">Picking data structures in Erlang</p>
+					<p align="left">Handling OTP16 compatability</p>
+					<p align="left">Compacting the Journal (value store)</p>
+					<p align="left">Vnode coordination issues</p>
+					<p align="left">Avoiding long-tail blocking (e.g. the 40ms cast)</p>
+					<p align="left">Naming things</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+					<h2>Leveled - Was it worth it?</h2>
+					<p align="left">Learned loads about Erlang - will continue to use</p>
+					<p align="left">Erlang/OTP coped well with my mistakes</p>
+					<p align="left">Pleasantly surprised by the throughput comparison</p>
+					<p align="left">Actors made more sense to me than objects</p>
+					<p align="left">Relevance increased by support issues with Riak</p>
+					<p align="left">Now getting pull requests</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+					<img width="600" height="450" data-src="images/thank-you.jpg" alt="Comparison with 2i"/>
+					<p>@masleeds</p>
+					<p>https://github.com/martinsumner/leveled</p>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
