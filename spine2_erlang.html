@@ -1,0 +1,278 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Spine II - An Overview</title>
+
+		<meta name="description" content="A walk-through of how The Big NHS Computer was replaced">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+				<h2>The Big NHS Computer</h2>
+				<p>The Prime Minister said ..</p>
+				<blockquote cite="http://www.independent.co.uk/voices/commentators/oliver-wright-the-potential-was-huge-but-so-were-the-problems-2330925.html">
+                    &ldquo;The possibilities are enormous if we can get this right&rdquo;
+                </blockquote>
+				</section>
+				<section>
+					<h2>Today I intend to ...</h2>
+					<p align="left">Talk through a programme gone bad</p>
+					<p align="left">Focus on the technology and people problems</p>
+                    <p align="left">Look at the role Erlang played in the rescure</p>
+                    <p align="left">Consider what this does and doesn't mean for the future</p>
+                    <p align="left"><small>http://martinsumner.github.io/presentations/spine2_erlang.html#/</small></p>
+                    <p><small>@masleeds</small></p>
+				</section>
+
+				<section>
+					<p>See Wikipedia </p>
+					<p><a href="https://en.wikipedia.org/wiki/List_of_failed_and_overbudget_custom_software_projects#Permanent_failures" target="_blank">List of failed and overbudget custom software projects - Permanent Failures</a>
+					</p>
+					<img width="1200" height="200" data-src="images/wikipedia.png" alt="Wikipedia Screenshot"/>
+				</section>
+				<section>
+					<h2>The Spine Part - The supplier speaks ...</h2>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;It has made transformational healthcare applications available to approximately 1.3 million NHS healthcare staff across England, providing care to circa 50 million UK citizens.&rdquo;
+                	</blockquote>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;20-plus customised NHS Spine applications ... combined cutting edge technologies to meet the demanding service level agreements and response times required &rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<h2>More of their own words</h2>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;The contract was (and continues to be) one of the largest IT programmes in the world, consuming over 15,000 man-years of effort to date ... Over 3,000 servers are hosted and supported&rdquo;
+                	</blockquote>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;(The delivery) methodology is now an internationally recognised standard for complex software development programme delivery&rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<p>What did we build again?</p>
+					<img width="500" height="500" data-src="images/first-death-star.png" alt="The Death Star">
+                </section>
+
+                <section>
+                    <h2>What does this kind of success look like?</h2>
+                    <p align="left">Spine can release with <strong>£30m</strong> in transition costs alone</p>
+                    <p align="left">It costs over <strong>£50m</strong> per annum to keep the lights on</p>
+                    <p align="left">Around <strong>50%</strong> of the original business case met</p>
+                    <p align="left">The system is <strong>stable</strong> when <strong>untouched</strong></p>
+                </section>
+                <section>
+                    <img width="700" height="500" data-src="images/stormtrooper-despair.jpg" alt="Stormtrooper Despair">
+                </section>
+                <section>
+                    <h2>The people problem</h2>
+                    <p align="left">Parkinsons' Law and pre-emptive building of management structures</p>
+                    <p align="left">Conway's Law and the dominance of contractual boundaries</p>
+                    <p align="left">The phony war of perception management</p>
+                    <p align="left">Anchoring and the creeping cost of operations</p>
+                </section>
+                <section>
+                    <h2>The technology problem</h2>
+                </section>
+                <section>
+                    <h2>The hunt for evidence of slowness</h2>
+                    <p align="left">Linear expectations</p>
+                    <p align="left">The complexity of feedback loops</p>
+                    <p align="left">Infrastructure chosen through fear of latency not complexity</p>
+                    <p align="left">Scaling often reversed due to latency</p>
+                </section>
+                <section>
+                    <h2>The maginot line - strength is easier to see than weakness</h2>
+                    <p align="left">Security theatre</p>
+                    <p align="left">Data is in the system, not just the database</p>
+                    <p align="left">Competition between redundancy protocols</p>
+                    <p align="left">Change costs on hitting limits</p>
+                </section>
+                <section>
+                    <h2>Every problem looks like a network problem</h2>
+                    <p align="left">Humans are anchored to the literal reading of logs</p>
+                    <p align="left">Network state management - timeouts, nagle, pools</p>
+                    <p align="left">Compounded by complexity, variety and contracts</p>
+                </section>
+
+				<section data-background="#A3C2FF">
+					<blockquote cite="https://github.com/GovernmentCommunicationsHeadquarters/BoilingFrogs/blob/master/GCHQ_Boiling_Frogs.pdf">
+                    &ldquo;They shouldn't build these death stars any more.  They keep getting blown up&rdquo;
+                	</blockquote>
+					<img width="500" height="500" data-src="images/death-star-2.jpg" alt="The Death Star">
+                </section>
+                
+                <section data-background="#A3C2FF">
+                    <h2>The people solution</h2>
+                    <p align="left">Inspired by Lean thinking and TPS</p>
+                    <p align="left">The rebel alliance must be small, be one</p>
+                    <p align="left">Enforce feedback from reality</p>
+                    <p align="left">The primary technology requirement</p>
+                    <p align="right"> - fit the people solution</p> 
+                    <p align="left">The secondary technology requirement</p>
+                    <p align="right"> - address deferred cost of operations & change</p> 
+                </section>
+
+                <section data-background="#A3C2FF">
+                    <h2>Planning the technology solution</h2>
+                    <p align="left">Looked sideways. Looked backwards</p>
+                    <p align="left">Erlang gave vision of availability and software-driven scale</p> 
+                    <img width="600" height="300" data-src="images/PlanningMeeting.jpeg" alt="Planning Meeting">
+                </section>
+				
+				<section data-background="#A3C2FF">
+					<h2>The technology answers</h2>
+					<p align="left">Chose two Erlang products - Riak and RabbitMQ</p>
+					<p align="left">Riak critical to everything we wanted to achieve</p>
+                    <p align="left">Rabbit (and Tornado) were a means to support Python ...</p>
+                    <p align="right">... with async message passing between actors</p>
+                    <p align="right">... with generalised behaviours</p>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>A Standard Path Through Standard Behaviours</h2>
+                    <img width="700" height="500" data-src="images/DeathStarArchitectureDiagrams.jpg" alt="Death Star Architecture Diagrams">
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Scaling</h2>
+                    <p align="left">Add a process, or add a node</p>
+                    <p align="left">Adding the same node solves memory, CPU or disk I/O</p>
+                    <p align="left">Slow CPUs, slow disks - resolve bottlenecks logically</p>
+                    <p align="left">Don't wait on response - unless we can absorb back-pressure</p>
+                    <p align="left">Consistent throughput with variable latency</p>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Failure</h2>
+                    <p align="left">Handle failure by processing elsewhere</p>
+                    <p align="left">Respond slowly to individual failure</p>
+                    <p align="left">No triage to determine response</p>
+                    <p align="left">No side effects of response</p>
+                    <p align="left">Automate repsonse globally by deep-ping of path</p>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Network hops</h2>
+                    <p align="left">Standardise protocols - AMQP/HTTP</p>
+                    <p align="left">Operational visibility of network hops ...</p>
+                    <p align="right">... Biggest speed-up is visibility</p>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Automate</h2>
+                    <p align="left">Remove human hands - other than to pause/reflect</p>
+                    <p align="left">Don't allow automation to excuse complexity</p>
+                    <p align="left">Security benefits of disconnection</p>
+                    <p align="left">Make rehearsal constant and natural</p>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Discipline</h2>
+                    <p align="left">Logs as important as tests</p>
+                    <p align="left">Enforce opportunities to work from logs</p>
+                    <p align="left">Reason end-to-end and test end-to-end - invert the pyramid</p>
+                </section>
+
+				<section data-background="#E6E68A">
+					<h2>What did/does it cost?</h2>
+					<p align="left">Took <strong>100 man years</strong> from inception to 1-years service</p>
+					<p align="left">Requires just over <strong>100 commodity 1RU servers</strong> in live</p>
+					<p align="left">Release costs are <strong>&lt 0.1%</strong> of previous release costs</p>
+					<p align="left"><strong>90%</strong> reduction in operating costs</p>
+					<p align="left">Total running team of <strong>30</strong> people supporting and ...</p>
+					<palign="left">... Managing more than <strong>£10m</strong> pa of change backlog</p>
+				</section>
+				<section data-background="#E6E68A">
+					<h2>Does it work?</h2>
+					<p align="left">(Nearly) like-for-like functional replacement ...</p>
+					<p align="left"><strong>99.999%</strong> available since go live</p>
+					<p align="left">Supports over <strong>300</strong> message interactions, eight UI applications</p>
+					<p align="left"><strong>45M</strong> messages a day<p>
+					<p align="left">Provides accesss to <strong>1.5bn</strong> records and documents</p>
+					<p align="left">The NHS waits more than <strong>800 working days less</strong> each day</p>
+                </section>
+               
+                <section data-background="#E6E68A">
+                    <h2>Positive Erlang Lessons</h2>
+                    <p align="left">It was a building block of simplicity<p>
+                    <p align="left">It led us to a new way of thinking about failure</p>
+                    <p align="left">Asyncronous message passing had a deep impact</p>
+                    <p align="right">... With standardised paths and behaviours</p>
+                    <p align="left">It went someway to helping us re-think about the boundary between network and application</p>
+                </section>
+                <section data-background="#E6E68A">
+                    <h2>Woot! So government will learn from this right ....</h2>
+                </section>
+                <section data-background="#E6E68A">
+                    <blockquote cite="https://martinfowler.com/articles/microservices.html">
+                        &ldquo;Be of the web not behind the web&rdquo;
+                    </blockquote>
+                    <blockquote cite="https://www.theregister.co.uk/2012/04/02/gov_it_contract_cap/">
+                        &ldquo;Blighty slaps £100m spending cap on govt IT projects&rdquo;
+                    </blockquote>
+                </section>
+                <section data-background="#E6E68A">
+                    <h2>Thousands of small projects - all of them poor value</h2>
+                    <img width="1000" height="500" data-src="images/GalacticSenate.png" alt="Galactic Senate">
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
