@@ -49,9 +49,9 @@
 				</section>
 				<section>
 					<h2>... and then for the next 15 years ...</h2>
-					<p align="left">Talk through a programme gone bad</p>
-					<p align="left">Focus on the technology problems, but can't ignore people</p>
-                    <p align="left">Look at the role played by Erlang in the rescue</p>
+					<p align="left">Talk through a programme gone bad: 2003 - 2013</p>
+					<p align="left">Focus on the technology problems</p>
+                    <p align="left">Look at the role played by Erlang in the rescue: 2011 - 2017</p>
                     <p align="left">Consider what this does and doesn't mean for the future</p>
                     <p align="left"><small>http://martinsumner.github.io/presentations/spine2_erlang.html#/</small></p>
                     <p><small>@masleeds</small></p>
@@ -88,21 +88,24 @@
 
                 <section>
                     <h2>What does this kind of success look like?</h2>
-                    <p align="left">Spine can release with <strong>£30m</strong> in transition costs alone</p>
-                    <p align="left">It costs over <strong>£50m</strong> per annum to keep the lights on</p>
                     <p align="left">Around <strong>50%</strong> of the original business case met</p>
                     <p align="left">The system is <strong>stable</strong> when <strong>untouched</strong></p>
+                    <p align="left">... and this makes it a success</p>
+                    <p align="left">Spine can release with <strong>£30m</strong> in transition costs alone</p>
+                    <p align="left">It costs over <strong>£50m</strong> per annum to keep the lights on</p>
+                    <p align="left">... and most people still think of it as a success</p>
                 </section>
                 <section>
                     <img width="700" height="500" data-src="images/stormtrooper-despair.jpg" alt="Stormtrooper Despair">
                 </section>
                 <section>
                     <h2>The people problem</h2>
-                    <p align="left">Parkinsons' Law and pre-emptive building of management structures</p>
+                    <p align="left">Parkinsons' Law and the generation of work</p>
                     <p align="left">Conway's Law and the dominance of contractual boundaries</p>
                     <p align="left">Pournelle's Iron Law of Bureaucracy</p>
+                    <p align="left">Brooks's Law</p>
                     <p align="left">The phony war of perception management</p>
-                    <p align="left">Anchoring and the creeping cost of operations</p>
+                    <p align="left">Anchoring</p>
                 </section>
                 <section>
                     <h2>The technology problem</h2>
@@ -110,7 +113,6 @@
                 <section>
                     <h2>The hunt for evidence of slowness</h2>
                     <p align="left">Linear expectations</p>
-                    <p align="left">The complexity of feedback loops</p>
                     <p align="left">Infrastructure chosen through fear of latency not complexity</p>
                     <p align="left">Scaling often reversed due to latency</p>
                     <p align="left">Change costs on hitting limits</p>
@@ -136,50 +138,32 @@
                 </section>
                 
                 <section data-background="#A3C2FF">
-                    <h2>The people solution</h2>
-                    <p align="left">Inspired by Lean thinking and TPS</p>
-                    <p align="left">The rebel alliance must be small, be one</p>
-                    <p align="left">Enforce feedback from reality</p>
-                    <p align="left">The primary technology requirement</p>
-                    <p align="right"> - fit the people solution</p> 
-                    <p align="left">The secondary technology requirement</p>
-                    <p align="right"> - address deferred cost of operations & change</p> 
-                </section>
-
-                <section data-background="#A3C2FF">
                     <h2>Planning the technology solution</h2>
                     <p align="left">Looked sideways. Looked backwards</p>
                     <p align="left">Erlang gave vision of availability and software-driven scale</p> 
+                    <p align="left">The power of small unified teams with a common goal</p>
                     <img width="600" height="300" data-src="images/PlanningMeeting.jpeg" alt="Planning Meeting">
                 </section>
 				
 				<section data-background="#A3C2FF">
-					<h2>The technology answers</h2>
-					<p align="left">Chose two Erlang products - Riak and RabbitMQ</p>
-					<p align="left">Riak critical to everything we wanted to achieve</p>
-                    <p align="left">Rabbit (and Tornado) were a means to support Python ...</p>
+					<h2>The Actor Model</h2>
+					<p align="left">Used Erlang products as building blocks - esp Riak</p>
+                    <p align="left">Used RabbitMQ (and Tornado) used a means to support Python ...</p>
                     <p align="right">... with async message passing between actors</p>
                     <p align="right">... with generalised behaviours</p>
-                </section>
-                <section data-background="#A3C2FF">
-                    <h2>A Standard Path Through Standard Behaviours</h2>
-                    <img width="700" height="500" data-src="images/DeathStarArchitectureDiagrams.jpg" alt="Death Star Architecture Diagrams">
+                    <p align="right">... and a small numbers of common paths</p>
                 </section>
                 <section data-background="#A3C2FF">
                     <h2>Scaling</h2>
-                    <p align="left">Add a process, or add a node</p>
-                    <p align="left">Adding the same node solves memory, CPU or disk I/O</p>
-                    <p align="left">Slow CPUs, slow disks - resolve bottlenecks logically</p>
-                    <p align="left">Don't wait on response - unless we can absorb back-pressure</p>
-                    <p align="left">Consistent throughput with variable latency</p>
+                    <p align="left">Avoided logical bottlenecks</p>
+                    <p align="left">Response in callbacks - unless we can absorb back-pressure</p>
                 </section>
                 <section data-background="#A3C2FF">
                     <h2>Failure</h2>
                     <p align="left">Handle failure by processing elsewhere</p>
-                    <p align="left">Slow human response to individual failure</p>
-                    <p align="left">No triage to determine response</p>
-                    <p align="left">No side effects of response</p>
-                    <p align="left">Automate repsonse globally by deep-ping of path</p>
+                    <p align="left">No triage to determine operational process</p>
+                    <p align="left">Slow triage to determine cause</p>
+                    <p align="left">Automate failover globally by deep-ping of path</p>
                 </section>
                 <section data-background="#A3C2FF">
                     <h2>Network hops</h2>
@@ -196,6 +180,7 @@
                 </section>
                 <section data-background="#A3C2FF">
                     <h2>Discipline</h2>
+                    <p align="left">No Silver Bullet - all be great designers</p>
                     <p align="left">Logs as important as tests</p>
                     <p align="left">Enforce opportunities to work from logs</p>
                     <p align="left">Reason end-to-end and test end-to-end - invert the pyramid</p>
@@ -208,7 +193,8 @@
 					<p align="left">Release costs are <strong>&lt 0.1%</strong> of previous release costs</p>
 					<p align="left"><strong>90%</strong> reduction in operating costs</p>
 					<p align="left">Total running team of <strong>30</strong> people supporting and ...</p>
-					<palign="left">... Managing more than <strong>£10m</strong> pa of change backlog</p>
+                    <p align="left">... Managing more than <strong>£10m</strong> pa of change backlog</p>
+                    <p align="left">Adding the same <strong>slow</strong>node resolves capacity issues</p>
 				</section>
 				<section data-background="#E6E68A">
 					<h2>Does it work?</h2>
@@ -222,13 +208,20 @@
                
                 <section data-background="#E6E68A">
                     <h2>Positive Erlang Lessons</h2>
-                    <p align="left">It was a building block of simplicity<p>
-                    <p align="left">It led us to a new way of thinking about failure</p>
-                    <p align="left">A re-think about the boundary between network and application</p>
+                    <p align="left">It led us to a new way of thinking about failure ...</p>
+                    <p align="left">    ... and about the boundary between network and application</p>
+                </section>
+                <section data-background="#E6E68A">
+                    <h2>Positive Erlang Lessons</h2>
                     <p align="left">Asyncronous message passing had a deep impact ...</p>
-                    <p align="right">... With standardised paths and behaviours</p>
+                    <p align="left">   ... With standardised paths and behaviours</p>
+                </section>
+                <section data-background="#E6E68A">
+                    <h2>Positive Erlang Lessons</h2>
                     <p align="left">Per-process overheads and mistakes ...</p>
-                    <p align="right">... Regret not embracing it more deeply</p>
+                    <p align="left">    ... Regret not embracing it more deeply</p>
+                    <p align="left">It brought us closer to computer science ...</p>
+                    <p align="left">    ... and pushed us away from vendors</p>
                 </section>
                 <section data-background="#E6E68A">
                     <h2>Woot! So government will learn from this right ....</h2>
@@ -248,6 +241,11 @@
                 <section data-background="#E6E68A">
                     <h2>Thousands of small projects - all of them poor value</h2>
                     <img width="1000" height="500" data-src="images/GalacticSenate.png" alt="Galactic Senate">
+                </section>
+                <section data-background="#E6E68A">
+                    <h2>Thank-You</h2>
+                    <p>http://martinsumner.github.io/presentations/spine2_erlang.html#/</p>
+                    <p>@masleeds</p>
                 </section>
 			</div>
 
