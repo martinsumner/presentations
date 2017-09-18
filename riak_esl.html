@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Leveled</title>
+
+		<meta name="description" content="Planned changes to Riak">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-background="#E6E68A">
+					<h2>Riak and the NHS</h2>
+					<p align="left">More than 100 Riak nodes in production</p>
+					<p align="left">Billion object clusters, always-on availability needs</p>
+					<p align="left">Initially chosen due to availability, durability demands</p>
+					<p align="left">Notable for long-term low-cost of ownership</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Areas for Improvement</h2>
+					<p align="left">Cost of Availability and Durability</p>
+					<p align="left">Consistency windows and Secondary Indexes</p>
+					<p align="left">Prioritisation of workloads</p>
+					<p align="left">Bigger objects</p>
+					<p align="left">Observability</p>
+					<p align="left">Replication</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Problem: Cost of Availability and Durability</h2>
+					<p align="left"><b>Good News</b>: Planes land on runways</p>
+					<p align="left"><b>Bad News</b>: Data Centres go dark - power and network</p>
+					<p align="left"><b>Bad News</b>: Servers fail - both temporary and permanent </p>
+					<p align="left"><b>Req</b>: Maintain data diversity - under failure conditions</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Solutions: Cost of Availability and Durability</h2>
+					<p align="left">Node confirms</p>
+					<p align="left">Selective sync</p>
+					<p align="left">Tail wrapping and the balancing the ring</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Problem: Index Inconsistency Windows</h2>
+					<p align="left">Coverage plans -> incomplete nodes, no rr</p>
+					<p align="left">Coverage plans -> repairing/replacing nodes</p>
+					<p align="left">Coverage plans -> nodes with internal entropy</p>
+					<p align="left">Req: Reduce the length of windows </p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Solutions: Index Inconsistency Windows</h2>
+					<p align="left">no_coverage node status</p>
+					<p align="left">Flexible anti-entropy queries - 2i consistency</p>
+					<p align="left">Flexible anti-entropy queries - g-sets and big-sets</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Problem: Prioritisation</h2>
+					<p align="left">o(100) vnode_workers per node</p>
+					<p align="left">Locking/throttling schemes for expensive jobs</p>
+					<p align="left">Req: Maintaining GETS/PUTs critical</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Solutions: Prioritisation</h2>
+					<p align="left">Make jobs cheaper - no scanning objects</p>
+					<p align="left">node_worker_pool - constrain per node</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Problem: Bigger Objects</h2>
+					<p align="left">Size linked to popularity</p>
+					<p align="left">Write amplification</p>
+					<p align="left">Read tripling</p>
+					<p align="left">Set sharding</p>
+					<p align="left">Replication blocking</p>
+					<p align="left">Req: Mitigate the risks of performance decay</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Solutions: Bigger Objects</h2>
+					<p align="left">Merge Trees of keys not values</p>
+					<p align="left">Optimise for and use HEAD requests</p>
+					<p align="left">Per sub-key operations in Sets</p>
+					<p align="left">Use of multiple per-node external queues for repl</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Problem: Observability</h2>
+					<p align="left">I know I put it there but ....</p>
+					<p align="left">Logging at the end not the start</p>
+					<p align="left">Traceability into the backend</p>
+					<p align="left">Functional reporting requires fetching</p>
+					<p align="left">Req: Be better informed of contents and activity</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Solutions: Observability</h2>
+					<p align="left">Optimised folds over object metadata</p>
+					<p align="left">Sampling folds</p>
+					<p align="left">Folds with non-list accumulators</p>
+					<p align="left">Erlang end-to-end</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Problem: Replication</h2>
+					<p align="left"><strike>Barrier to going open-source</strike></p>
+					<p align="left">Ring-size changes not safe within a cluster</p>
+					<p align="left">List keys is bandwidth hungry</p>
+					<p align="left">Doesn't optimise for recency</p>
+					<p align="left">Complexity</p>
+					<p align="left">Req: Bi-directional replication with external controls</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Solutions: Replication</h2>
+					<p align="left">Rabl to reduce complexity</p>
+					<p align="left">(Tictac) Merkle tree folds</p>
+					<p align="left">Self-expiring indexes</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Thank-You</h2>
+					<p>http://martinsumner.github.io/presentations/riak_esl.html#/</p>
+					<p>@masleeds</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
