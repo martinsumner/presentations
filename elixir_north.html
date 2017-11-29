@@ -1,0 +1,243 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Spine II - An Overview</title>
+
+		<meta name="description" content="A walk-through of how The Big NHS Computer was replaced">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+                    <h2>A Journey to Erlang </h2>
+                    <img width="1200" height="600" data-src="images/erlang_chat.png" alt="Erlang"/>
+				</section>
+				<section>
+					<h2>A long long time ago ...</h2>
+					<img width="1200" height="600" data-src="images/network_experience.jpg" alt="Being a network engineer"/>
+				</section>
+
+				<section>
+					<p>See Wikipedia </p>
+					<p><a href="https://en.wikipedia.org/wiki/List_of_failed_and_overbudget_custom_software_projects#Permanent_failures" target="_blank">List of failed and overbudget custom software projects - Permanent Failures</a>
+					</p>
+					<img width="1200" height="200" data-src="images/wikipedia.png" alt="Wikipedia Screenshot"/>
+				</section>
+				<section>
+					<h2>The Spine Part - The supplier speaks ...</h2>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;It has made transformational healthcare applications available to approximately 1.3 million NHS healthcare staff across England, providing care to circa 50 million UK citizens.&rdquo;
+                	</blockquote>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;20-plus customised NHS Spine applications ... combined cutting edge technologies to meet the demanding service level agreements and response times required &rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<h2>More of their own words</h2>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;The contract was (and continues to be) one of the largest IT programmes in the world, consuming over 15,000 man-years of effort to date ... Over 3,000 servers are hosted and supported&rdquo;
+                	</blockquote>
+					<blockquote cite="http://www.globalservices.bt.com/uk/en/casestudy/nhs_spine">
+                    &ldquo;(The delivery) methodology is now an internationally recognised standard for complex software development programme delivery&rdquo;
+                	</blockquote>
+				</section>
+				<section>
+					<p>What did we build again?</p>
+					<img width="500" height="500" data-src="images/first-death-star.png" alt="The Death Star">
+                </section>
+
+                <section>
+					<p>The world of accidental distributed systems</p>
+					<img width="500" height="500" data-src="images/network_problem.jpg" alt="The Network Problemr">
+                </section>
+
+                <section>
+                    <img width="700" height="500" data-src="images/stormtrooper-despair.jpg" alt="Stormtrooper Despair">
+                </section>
+
+				<section data-background="#A3C2FF">
+					<blockquote cite="https://github.com/GovernmentCommunicationsHeadquarters/BoilingFrogs/blob/master/GCHQ_Boiling_Frogs.pdf">
+                    &ldquo;They shouldn't build these death stars any more.  They keep getting blown up&rdquo;
+                	</blockquote>
+					<img width="500" height="500" data-src="images/death-star-2.jpg" alt="The Death Star">
+                </section>
+
+                <section data-background="#A3C2FF">
+                    <h2>Planning the technology solution</h2>
+                    <p align="left">Looked sideways. Looked backwards</p>
+                    <p align="left">Erlang gave vision of availability and software-driven scale</p>
+                    <p align="left">The power of small unified teams with a common goal</p>
+                    <img width="600" height="300" data-src="images/PlanningMeeting.jpeg" alt="Planning Meeting">
+                </section>
+
+				<section data-background="#A3C2FF">
+					<h2>The Key Technology Changes</h2>
+					<p align="left">The Actor Model</p>
+                    <p align="left">An end-to-end model for scaling and failure</p>
+                    <p align="left">Fifteen applications - four flows</p>
+                    <p align="left">Performance through visibility</p>
+                    <p align="left">Automate</p>
+                    <p align="left">Discipline and conscious trade-offs</p>
+                </section>
+
+				<section data-background="#E6E68A">
+					<h2>What did/does it cost?</h2>
+					<p align="left">Took <strong>100 people years</strong> from inception to 1-years service</p>
+					<p align="left">Requires just over <strong>100 commodity 1RU servers</strong> in live</p>
+					<p align="left">Release costs are <strong>0.1%</strong> of previous release costs</p>
+					<p align="left"><strong>90%</strong> reduction in operating costs</p>
+					<p align="left">Total running team of <strong>30</strong> people supporting and ...</p>
+                    <p align="left">... Managing more than <strong>£10m</strong> pa of change backlog</p>
+                    <p align="left">Adding the same <strong>slow</strong> node resolves any capacity issue</p>
+				</section>
+				<section data-background="#E6E68A">
+					<h2>Does it work?</h2>
+					<p align="left">(Nearly) like-for-like functional replacement ...</p>
+					<p align="left"><strong>99.999%</strong> available since go live</p>
+					<p align="left">Supports over <strong>300</strong> message interactions, eight UI applications</p>
+					<p align="left"><strong>45M</strong> messages a day<p>
+					<p align="left">Provides accesss to <strong>1.5bn</strong> records and documents</p>
+					<p align="left">Aggregate reduction in wait time is over <strong>800 working days</strong> each day</p>
+                </section>
+
+                <section data-background="#E6E68A">
+                    <h2>At the heart of it all - an Erlang Product</h2>
+                    <img width="700" height="500" data-src="images/riak_kv_ring.png" alt="Riak KV">
+                </section>
+                <section data-background="#E6E68A">
+					<h2>What is Riak?</h2>
+					<p align="left">Inspired by the Amazon Dynamo paper</p>
+					<p align="left">Written in Erlang</p>
+					<p align="left">Scale-out Key-Value store</p>
+					<p align="left">Data protection on conflict (not lww)</p>
+				</section>
+
+				<section data-background="#E6E68A">
+					<h2>Use Postgres ... but sometimes</h2>
+                    <p align="left">You are willing to be the query planner</p>
+					<p align="left">You are willing to reason (a lot) about consistency</p>
+					<p align="left">Because the operational cost of achieving ...</p>
+					<p align="left">Availability and Scalability and Durability</p>
+                    <p align="left">... are your absolute priority</p>
+				</section>
+
+                <section data-background="#E6E68A">
+					<h2>Where we had come from</h2>
+					<img width="500" height="500" data-src="images/database_cio.jpg" alt="Oracle - been there">
+				</section>
+
+                <section data-background="#E6E68A">
+					<h2>But what now?</h2>
+					<img width="800" height="500" data-src="images/basho_bust.png" alt="Basho to the docs">
+				</section>
+                <section data-background="#E6E68A">
+					<h2>But what now?</h2>
+					<img width="800" height="500" data-src="images/bet365_buyout.png" alt="365 to the rescue">
+				</section>
+
+                <section data-background="#E6E68A">
+					<h2>News from Leeds</h2>
+					<img width="800" height="500" data-src="images/leeds.jpeg" alt="Leeds">
+				</section>
+
+                <section data-background="#E6E68A">
+					<h2>Areas for Improvement</h2>
+					<p align="left">Cost of Availability and Durability</p>
+					<p align="left">Consistency windows and Secondary Indexes</p>
+					<p align="left">Prioritisation of workloads</p>
+					<p align="left">Bigger objects</p>
+					<p align="left">Observability</p>
+					<p align="left">Replication</p>
+				</section>
+
+                <section data-background="#E6E68A">
+					<h2>Revisiting Log-Structured Merge Trees</h2>
+                    <img width="1200" height="450" data-src="images/LSM_paper.png" alt="LSM Paper Diagram"/>
+				</section>
+
+                <section data-background="#E6E68A">
+					<h2>A new backend</h2>
+                    <img width="1200" height="500" data-src="images/ed_vs_db.png" alt="LSM Paper Diagram"/>
+				</section>
+
+                <section data-background="#E6E68A">
+                    <h2>Some conclusions</h2>
+                    <p align="left">Be wary of accidentally building a distributed system</p>
+                    <p align="left">Sometimes other approaches to databases are justified</p>
+                    <p align="left">BEAM-based languages have access to valuable solutions</p>
+                    <p align="left">Erlang isn't that scary</p>
+                </section>
+
+                <section data-background="#E6E68A">
+                    <h2>Thank-You</h2>
+                    <p>http://martinsumner.github.io/presentations/elixir_north.html#/</p>
+                    <p>https://github.com/martinsumner/leveled</p>
+                    <p>https://github.com/nhs-riak</p>
+                    <p>@masleeds</p>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
