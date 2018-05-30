@@ -1,0 +1,229 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Tictac Trees - Code BEAM Stockholm</title>
+
+		<meta name="description" content="A walk-through of how The Big NHS Computer was replaced">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides" data-background="#E6E68A">
+				<section>
+                    <h2>Eventually with Certainty</h2>
+                    <img width="900" height="550" data-src="images/mhen97_hi.jpg" alt="Entropy"/>
+				</section>
+
+                <section>
+                    <h2>Eventually with Certainty</h2>
+                    <p align="left">History of the NHS Problem - Durability & Availability</p>
+                    <p align="left">Anti-Enropy Improvements Scheduled for Riak 3.0</p>
+                    <p align="left"> - Why do we need anti-entropy in Riak?</p>
+                    <p align="left"> - Why do we need better anti-entropy in Riak?</p>
+                </section>
+
+                <section>
+                    <h2>The NHS Spine Problem</h2>
+                    <p align="left">A diverse group of organisations and suppliers</p>
+                    <p align="left">2bn records/documents stored centrally</p>
+                    <p align="left">300 different transactional messages supported</p>
+                    <p align="left">40M requests per day - but why?</p>
+                    <p align="left">Workrounds and Growth - individual vs system-wide failure</p>
+                    <p align="left">Data loss - the unarticulated guarantee</p>
+                </section>
+
+                <section>
+                    <h2>2003 - First Answer</h2>
+                    <img width="900" height="500" data-src="images/2003_SpineDB.png" alt="2003 Trucopy"/>
+				</section>
+
+                <section>
+                    <h2>2008 - Thousands of Years of Effort to get ...</h2>
+                    <img width="900" height="500" data-src="images/2008_SpineDB.png" alt="2008 Dataguard"/>
+				</section>
+
+                <section >
+					<h2>Time for Revolution</h2>
+					<img width="500" height="500" data-src="images/database_cio.jpg" alt="Oracle - been there">
+				</section>
+
+                <section data-background="#E6E68A">
+                    <h2>2014 - Riak KV</h2>
+                    <img width="900" height="500" data-src="images/2014_SpineDB.png" alt="2008 Dataguard"/>
+				</section>
+
+                <section data-background="#E6E68A">
+                    <h2>Riak KV - Benefits</h2>
+                    <p align="left">98% reduction in hardware annuity charges</p>
+                    <p align="left">Operational cost and fear of failover transformed</p>
+                    <p align="left">Immediate dual-node persistence, eventual distribution</p>
+                    <p align="left">Outcome - five nines, 24/7, one engineer on-call</p>
+                </section>
+
+				<section data-background="#E6E68A">
+					<h2>Riak KV - Eventual Distribution and Consistency</h2>
+					<p align="left">Dotted Version Vectors</p>
+                    <p align="left">Hinted Handoff</p>
+                    <p align="left">Read Repair</p>
+                    <p align="left">Real-time replication push</p>
+                    <p align="left">Per-vnode key-listing full-sync</p>
+                </section>
+
+				<section data-background="#E6E68A">
+					<h2>Merkle Trees</h2>
+
+				</section>
+				<section data-background="#E6E68A">
+					<h2>Dirty Segments</h2>
+				</section>
+
+                <section data-background="#E6E68A">
+					<h2>Active Anti-Entropy</h2>
+					<p align="left">Keystore has a memory cost</p>
+                    <p align="left">Rebuilds have unpredictable impact</p>
+                    <p align="left">Hashes don't support smart decisions</p>
+                    <p align="left">Inter-cluster replication requires alignment</p>
+                    <p align="left">Inter-cluster replication worked sometimes</p>
+                    <p align="left">No flexibility - e.g. per bucket</p>
+                </section>
+
+                <section data-background="#E6E68A">
+					<h2>Calculating a Hash Securely</h2>
+
+                </section>
+
+                <section data-background="#E6E68A">
+					<h2>LSM trees need a hash of the key already</h2>
+
+                </section>
+
+                <section data-background="#E6E68A">
+					<h2>XOR benefits</h2>
+					<p align="left">Read before write - can make a delta change</p>
+                    <p align="left">Can fold across a stores incrementing a tree</p>
+                    <p align="left">Can merge trees across stores</p>
+                </section>
+
+                <section data-background="#E6E68A">
+					<h2>Segment Hash Benefits</h2>
+					<p align="left">Can use an ordered store - Native</p>
+                    <p align="left">Can use ordering to make Parallel stores multi-purpose</p>
+                </section>
+
+                <section data-background="#E6E68A">
+					<h2>KV Index Tictac Tree</h2>
+                    <img width="900" height="500" data-src="images/2018_kv_index_tictactree.png" alt="Tictac Tree"/>
+				</section>
+
+                <section data-background="#E6E68A">
+                    <h2>Database benefits</h2>
+                    <p align="left">Improve throughput</p>
+                    <p align="left">More frequent checking - and double-checking</p>
+                    <p align="left">Validate not rebuild</p>
+                    <p align="left">Continuous partial rebuild</p>
+                    <p align="left">Reuse vnode queue for instructions</p>
+                </section>
+
+                <section data-background="#E6E68A">
+                    <h2>Resizing your ring</h2>
+                    <p align="left">A safe and simple method</p>
+                    <p align="left">Integrate with ring-size = 1 databases</p>
+                    <p align="left">Replicate to n=1 clusters (backup)</p>
+                    <p align="left">Continuous partial rebuild</p>
+                    <p align="left">Painful OS code - resize, yokozuna, full-sync</p>
+                </section>
+
+                <section data-background="#E6E68A">
+                    <h2>Results</h2>
+                    <img width="900" height="500" data-src="images/ThroughputcompareAAE.png" alt="AAE Test"/>
+                </section>
+
+                <section data-background="#E6E68A">
+                    <h2>Results</h2>
+                    <p align="left">&lt 0.1% delta compares to no AAE</p>
+                    <p align="left">&gt 4% improvement compared to legacy AAE</p>
+                    <p align="left">92.5% root_compare, 7.5% root_confirm</p>
+                </section>
+
+                <section data-background="#E6E68A">
+                    <h2>Related Work</h2>
+                    <p align="left">Leveled</p>
+                    <p align="left">Core node worker pool</p>
+                    <p align="left">Coverage fold</p>
+                    <p align="left">Rabl</p>
+                </section>
+
+
+                <section data-background="#E6E68A">
+                    <h2>Thank-You</h2>
+                    <p>http://martinsumner.github.io/presentations/codebeam_sto#/</p>
+                    <p>https://github.com/martinsumner/kv_index_tictactree</p>
+                    <p>https://github.com/martinsumner/leveled</p>
+                    <p>https://github.com/basho/riak</p>
+                    <p>@masleeds</p>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
