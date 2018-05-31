@@ -47,15 +47,15 @@
 
                 <section>
                     <h2>Eventually with Certainty</h2>
-                    <p align="left">History of the NHS Problem - Durability & Availability</p>
-                    <p align="left">Anti-Enropy Improvements Scheduled for Riak 3.0</p>
+                    <p align="left">History of the NHS Problem</p>
+                    <p align="left"> - Why do we need Riak?</p>
                     <p align="left"> - Why do we need anti-entropy in Riak?</p>
                     <p align="left"> - Why do we need better anti-entropy in Riak?</p>
                 </section>
 
                 <section>
-                    <h2>The NHS Spine Problem</h2>
-                    <p align="left">A diverse group of organisations and suppliers</p>
+                    <h2>The NHS SpineCore Problem</h2>
+                    <p align="left">Used by a diverse group of organisations and suppliers</p>
                     <p align="left">2bn records/documents stored centrally</p>
                     <p align="left">300 different transactional messages supported</p>
                     <p align="left">40M requests per day - but why?</p>
@@ -87,8 +87,7 @@
                     <h2>Riak KV - Benefits</h2>
                     <p align="left">98% reduction in hardware annuity charges</p>
                     <p align="left">Operational cost and fear of failover transformed</p>
-                    <p align="left">Immediate dual-node persistence, eventual distribution</p>
-                    <p align="left">Outcome - five nines, 24/7, one engineer on-call</p>
+                    <p align="left">Outcome - 99.999%, 24/7, one engineer on-call</p>
                 </section>
 
 				<section data-background="#E6E68A">
@@ -102,10 +101,15 @@
 
 				<section data-background="#E6E68A">
 					<h2>Merkle Trees</h2>
-
+                    <img width="900" height="500" data-src="images/hashtree.png" alt="Hashtree"/>
 				</section>
 				<section data-background="#E6E68A">
-					<h2>Dirty Segments</h2>
+					<h2>Dirty or Mismatched Segments - Need a segment-ordered store</h2>
+                    <p align="left">vnode -> index_hashtree -> hashtree {preflist, n_val)}</p>
+                    <p align="left">Keys hash to segments, keys & clocks to segment values</p>
+                    <p align="left">Need to know keys/hashes by segement</p>
+                    <p align="left"> - updates to trees are deferred (dirty segements)</p>
+                    <p align="left"> - mismatched segments need to be converted back</p>
 				</section>
 
                 <section data-background="#E6E68A">
@@ -113,19 +117,22 @@
 					<p align="left">Keystore has a memory cost</p>
                     <p align="left">Rebuilds have unpredictable impact</p>
                     <p align="left">Hashes don't support smart decisions</p>
-                    <p align="left">Inter-cluster replication requires alignment</p>
-                    <p align="left">Inter-cluster replication worked sometimes</p>
+                    <p align="left">Inter-cluster synchronisation requires alignment</p>
+                    <p align="left">Inter-cluster synchronisation works only sometimes</p>
                     <p align="left">No flexibility - e.g. per bucket</p>
                 </section>
 
                 <section data-background="#E6E68A">
 					<h2>Calculating a Hash Securely</h2>
-
+                    <p align="left">H([{K0, DVV0}, {K1, DVV1} .... {Kn, DVVn}])</p>
+                    <p align="left">H({K0, DVV0}) XOR H({K1, DVV1}) XOR .... H({Kn, DVVn})</p>
+                    <img width="600" height="400" data-src="images/StackExchangeQ.png" alt="Do not xor"/>
                 </section>
 
                 <section data-background="#E6E68A">
 					<h2>LSM trees need a hash of the key already</h2>
-
+                    <img width="300" height="300" data-src="images/LSM_Pic1.png" alt="LSM Bloom"/>
+                    <img width="300" height="300" data-src="images/LSM_Pic2.png" alt="LSM Bloom"/>
                 </section>
 
                 <section data-background="#E6E68A">
@@ -175,6 +182,13 @@
                     <p align="left">&gt 4% improvement compared to legacy AAE</p>
                     <p align="left">92.5% root_compare, 7.5% root_confirm</p>
                 </section>
+
+                <section data-background="#E6E68A">
+                    <h2>Better Idea?</h2>
+                    <img width="500" height="500" data-src="images/DottedDB.png" alt="Dotted DB"/>
+                </section>
+
+
 
                 <section data-background="#E6E68A">
                     <h2>Related Work</h2>
