@@ -39,41 +39,45 @@
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides" data-background="#E6E68A">
-				<section>
+			<div class="slides">
+				<section data-background="#934b29">
                     <h2>Eventually with Certainty</h2>
                     <img width="900" height="550" data-src="images/mhen97_hi.jpg" alt="Entropy"/>
 				</section>
 
-                <section>
+                <section data-background="#934b29">
                     <h2>Eventually with Certainty</h2>
-                    <p align="left">History of the NHS Problem</p>
+                    <p align="left">National Health Service - Englang</p>
                     <p align="left"> - Why do we need Riak?</p>
                     <p align="left"> - Why do we need anti-entropy in Riak?</p>
                     <p align="left"> - Why do we need better anti-entropy in Riak?</p>
+                    <p align="left">What is Riak</p>
+                    <p align="left"> - Developed by Basho</p>
+                    <p align="left"> - Bought to open source by Bet365</p>
+                    <p align="left"> - Run by community (part funded by NHS)</p>
                 </section>
 
-                <section>
+                <section data-background="#934b29">
                     <h2>The NHS SpineCore Problem</h2>
-                    <p align="left">Used by a diverse group of organisations and suppliers</p>
-                    <p align="left">2bn records/documents stored centrally</p>
-                    <p align="left">300 different transactional messages supported</p>
-                    <p align="left">40M requests per day - but why?</p>
-                    <p align="left">Workrounds and Growth - individual vs system-wide failure</p>
-                    <p align="left">Data loss - the unarticulated guarantee</p>
+                    <p align="left">Fornt to many appliations:</p>
+                    <p align="left"> - 2bn records/documents (10KB - 1MB))</p>
+                    <p align="left"> - 300 different transactional messages supported</p>
+                    <p align="left"> - 40M requests per day</p>
+                    <p align="left">We care about</p>
+                    <p align="left"> - Availability, Durability, and Reduced Variation</p>
                 </section>
 
-                <section>
+                <section data-background="#934b29">
                     <h2>2003 - First Answer</h2>
                     <img width="900" height="500" data-src="images/2003_SpineDB.png" alt="2003 Trucopy"/>
 				</section>
 
-                <section>
+                <section data-background="#934b29">
                     <h2>2008 - Thousands of Years of Effort to get ...</h2>
                     <img width="900" height="500" data-src="images/2008_SpineDB.png" alt="2008 Dataguard"/>
 				</section>
 
-                <section >
+                <section data-background="#934b29">
 					<h2>Time for Revolution</h2>
 					<img width="500" height="500" data-src="images/database_cio.jpg" alt="Oracle - been there">
 				</section>
@@ -91,13 +95,18 @@
                 </section>
 
 				<section data-background="#E6E68A">
-					<h2>Riak KV - Eventual Distribution and Consistency</h2>
+					<h2>Riak KV - Distribution and Eventual Consistency</h2>
 					<p align="left">Dotted Version Vectors</p>
                     <p align="left">Hinted Handoff</p>
                     <p align="left">Read Repair</p>
                     <p align="left">Real-time replication push</p>
                     <p align="left">Per-vnode key-listing full-sync</p>
                 </section>
+
+                <section data-background="#E6E68A">
+					<h2>Active Anti Entropy</h2>
+                    <img width="500" height="550" data-src="images/AAE_WebShot.png" alt="Hashtree"/>
+				</section>
 
 				<section data-background="#E6E68A">
 					<h2>Merkle Trees</h2>
@@ -108,7 +117,7 @@
                     <p align="left">vnode -> index_hashtree -> hashtree {preflist, n_val)}</p>
                     <p align="left">Keys hash to segments, keys & clocks to segment values</p>
                     <p align="left">Need to know keys/hashes by segement</p>
-                    <p align="left"> - updates to trees are deferred (dirty segements)</p>
+                    <p align="left"> - updates to trees are deferred (dirty segments)</p>
                     <p align="left"> - mismatched segments need to be converted back</p>
 				</section>
 
@@ -122,75 +131,69 @@
                     <p align="left">No flexibility - e.g. per bucket</p>
                 </section>
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
 					<h2>Calculating a Hash Securely</h2>
                     <p align="left">H([{K0, DVV0}, {K1, DVV1} .... {Kn, DVVn}])</p>
                     <p align="left">H({K0, DVV0}) XOR H({K1, DVV1}) XOR .... H({Kn, DVVn})</p>
                     <img width="600" height="400" data-src="images/StackExchangeQ.png" alt="Do not xor"/>
                 </section>
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
 					<h2>LSM trees need a hash of the key already</h2>
                     <img width="300" height="300" data-src="images/LSM_Pic1.png" alt="LSM Bloom"/>
                     <img width="300" height="300" data-src="images/LSM_Pic2.png" alt="LSM Bloom"/>
                 </section>
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
 					<h2>XOR benefits</h2>
 					<p align="left">Read before write - can make a delta change</p>
                     <p align="left">Can fold across a stores incrementing a tree</p>
                     <p align="left">Can merge trees across stores</p>
                 </section>
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
 					<h2>Segment Hash Benefits</h2>
 					<p align="left">Can use an ordered store - Native</p>
                     <p align="left">Can use ordering to make Parallel stores multi-purpose</p>
                 </section>
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
 					<h2>KV Index Tictac Tree</h2>
                     <img width="900" height="500" data-src="images/2018_kv_index_tictactree.png" alt="Tictac Tree"/>
 				</section>
 
-                <section data-background="#E6E68A">
-                    <h2>Database benefits</h2>
+                <section data-background="#A3C2FF">
+                    <h2>New AAE Features - Riak</h2>
                     <p align="left">Improve throughput</p>
                     <p align="left">More frequent checking - and double-checking</p>
                     <p align="left">Validate not rebuild</p>
-                    <p align="left">Continuous partial rebuild</p>
-                    <p align="left">Reuse vnode queue for instructions</p>
+                    <p align="left">Low cost full-sync</p>
+                    <p align="left">Intelligent repair</p>
+                    <p align="left">Ring resizing</p>
+                    <p align="left">Backups - e.g. compare n=3 with n=1</p>
+                    <p align="left">Compare with othe database types</p>
                 </section>
 
-                <section data-background="#E6E68A">
-                    <h2>Resizing your ring</h2>
-                    <p align="left">A safe and simple method</p>
-                    <p align="left">Integrate with ring-size = 1 databases</p>
-                    <p align="left">Replicate to n=1 clusters (backup)</p>
-                    <p align="left">Continuous partial rebuild</p>
-                    <p align="left">Painful OS code - resize, yokozuna, full-sync</p>
-                </section>
-
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
                     <h2>Results</h2>
                     <img width="900" height="500" data-src="images/ThroughputcompareAAE.png" alt="AAE Test"/>
                 </section>
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
                     <h2>Results</h2>
                     <p align="left">&lt 0.1% delta compares to no AAE</p>
                     <p align="left">&gt 4% improvement compared to legacy AAE</p>
                     <p align="left">92.5% root_compare, 7.5% root_confirm</p>
                 </section>
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
                     <h2>Better Idea?</h2>
                     <img width="500" height="500" data-src="images/DottedDB.png" alt="Dotted DB"/>
                 </section>
 
 
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
                     <h2>Related Work</h2>
                     <p align="left">Leveled</p>
                     <p align="left">Core node worker pool</p>
@@ -199,7 +202,7 @@
                 </section>
 
 
-                <section data-background="#E6E68A">
+                <section data-background="#A3C2FF">
                     <h2>Thank-You</h2>
                     <p>http://martinsumner.github.io/presentations/codebeam_sto#/</p>
                     <p>https://github.com/martinsumner/kv_index_tictactree</p>
