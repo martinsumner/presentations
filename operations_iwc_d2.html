@@ -1,0 +1,319 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Operational Excellence</title>
+
+		<meta name="description" content="A set of ideas around r-thinking and re-shaping operations">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+				<h2>Operational Excellence - Day 2</h2>
+				</section>
+				<section>
+					<h2>Today we will cover ....</h2>
+					<p align="left">Day 1 Reminder</p>
+					<p align="left">Human Interaction and Organisation</p>
+					<p align="left">Case Studies</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d2.html#/</small></p>
+				</section>
+
+                <section>
+					<h2>On The First Day ....</h2>
+					<p align="left">Parallels from Agile for Improvement</p>
+					<p align="left">Terminology is simplistic</p>
+                    <p align="left">Needs are user-driven and evolving</p>
+                    <p align="left">Measuring flow is important</p>
+					<p align="left">Need to be adaptable to confusing and unexpected events</p>
+                    <p align="left">Unavailability - related to process, organisation and bias</p>
+                    <p align="left">Direct communication with users should not be forgotten</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d2.html#/</small></p>
+				</section>
+
+                <section data-background="#A3C2FF">
+				<h2>Back to basics</h2>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>The Rising Pyramid</h2>
+					<p align="left">'They were all creating work for each other'</p>
+                    <p align="left">Rivals or subordinates</p>
+					<p align="left">ITIL's 17 Service Management Practices</p>
+					<p align="left">See also Conway's Law</p>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Learning, Flow and Improvement</h2>
+					<p align="left">Genchi Genbutsu (現地現物)</p>
+					<p align="left">Structure is defined by flow not function</p>
+					<p align="left">Management support flow</p>
+                    <p align="left">Leadership ensure Kaizen (改善)</p>
+                    <p align="left">Iteration and Feedback Loops</p>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Failing fast - or improving</h2>
+					<p align="left">Stop</p>
+					<p align="left">Build something better/worse from scratch</p>
+					<p align="left">Make things incrementally better/worse</p>
+                    <p align="left">Magnitude and directness</p>
+                    <p align="left">Relative priority</p>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Motivation and happiness</h2>
+					<p align="left">Ham and eggs</p>
+					<p align="left">Alignment of activity with purpose</p>
+					<p align="left">Freedom from context switching</p>
+                    <p align="left">Intrinsic motivation not allusion to incompetence</p>
+				</section>
+                <section data-background="#A3C2FF">
+                    <h2>Perception and Confidence</h2>
+                    <p align="left">Interference is correlated to confidence</p>
+                    <p align="left">Confidence via assertion or openness</p>
+                    <p align="left">The problem of power when powerless</p>
+                    <p align="left">Judgement on perception</p>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Communication and collaboration</h2>
+                    <p align="left">How much to communicate?</p>
+                    <p align="left">How many to communicate with?</p>
+                    <p align="left">Collaboration and distance</p>
+                    <p align="left">Challenge is part of collaboration</p>
+                    <p align="left">Triage is a fallacy?</p>
+                    <p align="left">Agile Document Lifecycle</p>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Automation</h2>
+                    <p align="left">Remove mundane tasks</p>
+                    <p align="left">Increase reliability to mundane tasks</p>
+                    <p align="left">Need for collaboration with the machine</p>
+                    <p align="left">The fight for attention and awareness</p>
+                </section>
+
+                <section>
+				<h2>A little exercise</h2>
+				</section>
+                <section>
+					<h2>Allspaw thesis - push a change</h2>
+                    <img width="600" height="600" data-src="images/AllspawChange.png" alt="Allspaw thesis"/>
+                </section>
+
+                <section>
+					<h2>Pick a test strategy</h2>
+					<p align="left">Independent (manual) exploratory tests</p>
+					<p align="left">Pyramid of test</p>
+					<p align="left">Inverted pyramid of test</p>
+                </section>
+
+
+                <section data-background="#E5E37B">
+				<h2>Scenarios</h2>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>For 18 days the internet has been unusable</h2>
+                <p align="left">Although not as bad as ....</p>
+                <p align="left">For 3 months the application has been unusable after 2pm</p>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>S3 in US_EAST-1</h2>
+                <p align="left">https://aws.amazon.com/message/41926/</p>
+                <p align="left">https://www.usenix.org/system/files/nsdi20-paper-brooker.pdf</p>
+				</section>
+
+
+                <section data-background="#E5E37B">
+				<h2>Challenger launch decision</h2>
+                <blockquote>
+                <p>&ldquo; Engineer Bob Ebeling in October 1985 wrote a memo—titled "Help!" so others would read it &rdquo;</p>
+                </blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Challenger launch decision</h2>
+                <blockquote>
+                <p>&ldquo; I am appalled. I am appalled by your recommendation. &rdquo;</p>
+                </blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Challenger launch decision</h2>
+                <blockquote>
+                <p>&ldquo; a second conference call was scheduled with only NASA & Thiokol management, excluding the engineers. For reasons that are unclear, Thiokol management disregarded its own engineers' warnings and now recommended that the launch proceed as scheduled; NASA did not ask why. Ebeling told his wife that night that Challenger would blow up. &rdquo;</p>
+                </blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>NPfIT launch decision</h2>
+                <blockquote>
+                <p>&ldquo; When one of the dogs goes lame, and begins to slow the others down, they are shot. They are then chopped up and fed to the other dogs. The survivors work harder, not only because they’ve had a meal, but also because they have seen what will happen should they themselves go lame. &rdquo;</p>
+                </blockquote>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>Spine II launch decision</h2>
+                <blockquote>
+                <p>&ldquo; It can only go live when you guarrantee it can never fail. &rdquo;</p>
+                </blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+                <h2>Air France Flight 447</h2>
+                <p align="left">I have the controls</p>
+                <p align="left">I don't have control of the airplane any more now</p>
+                <p align="left">The inputs cancelled each other out and triggered a "dual input" warning</p>
+                <p align="left">Soon after this, Robert said to himself, "climb" four times. Bonin heard this and replied, "But I've been at maximum nose-up for a while!" When Captain Dubois heard this, he realized Bonin was causing the stall, and shouted, "No no no, don't climb! No No No!"</p>
+                </section>
+
+                <section data-background="#E5E37B">
+                <h2>Automated documentation</h2>
+                <p align="left">Documentation as a signal</p>
+                </section>
+
+                <section data-background="#E5E37B">
+                <h2>Sarvega explosion</h2>
+                <p align="left">That's not my improvement</p>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>The Database CPU problem</h2>
+				</section>
+
+                <section data-background="#E5E37B">
+                <h2>The Database CPU problem</h2>
+					<blockquote >
+                    <p>&ldquo; Can we shut down the system to change a database config setting? &rdquo;</p>
+                	</blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+                <h2>The Database CPU problem</h2>
+					<blockquote >
+                    <p>&ldquo; We don't really have monitoring, no-one knows where Brendan is &rdquo;</p>
+                	</blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+                <h2>The Database CPU problem</h2>
+					<blockquote >
+                    <p>&ldquo; The database won't re-start - we'll get back to you &rdquo;</p>
+                	</blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+                <h2>The Database CPU problem</h2>
+					<blockquote>
+                    <p>&ldquo; The problem is they're using an old kernel that doens't understand NUMA &rdquo;</p>
+                	</blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Google Site Reliability Engineer</h2>
+                <p align="left">The emergence of the borg</p>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Doing only one thing now</h2>
+                <p align="left">Take time over everything else</p>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Hack week to happiness</h2>
+                <p align="left">Retention identified as critical issue</p>
+                <p align="left">Do what everyone wants - and everyone leaves</p>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>More modernity</h2>
+                <blockquote>
+                <p>&ldquo; There are a wealth of benefits that come from moving large systems like e-RS and DoS to the cloud.  Costs are lowered, reducing pressure on the public purse &rdquo;</p>
+                </blockquote>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Spine II</h2>
+                <p align="left">Failure to plan for migration failure</p>
+                <p align="left">API abuse</p>
+                <p align="left">The network decision</p>
+                <p align="left">The six month promise</p>
+                <p align="left">Magnitude and directness for technical debt</p>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Role-based Access Control</h2>
+                <p align="left">When operations is the project</p>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>The log book</h2>
+                <p align="left">Assume every interaction is the potential start of an incident</p>
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
