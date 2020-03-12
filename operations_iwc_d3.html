@@ -1,0 +1,304 @@
+﻿<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Operational Excellence</title>
+
+		<meta name="description" content="A set of ideas around r-thinking and re-shaping operations">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+				<h2>Operational Excellence - Day 3</h2>
+				</section>
+				<section>
+					<h2>Today we will cover ....</h2>
+                    <p align="left">Day 2 Review</p>
+					<p align="left">Observability</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d3.html#/</small></p>
+				</section>
+
+                <section>
+					<h2>On The First Day ....</h2>
+					<p align="left">Parallels from Agile for Improvement</p>
+					<p align="left">Terminology is simplistic</p>
+                    <p align="left">Needs are user-driven and evolving</p>
+                    <p align="left">Measuring flow is important</p>
+					<p align="left">Adaptability to confusing and unexpected events</p>
+                    <p align="left">Unavailability - process, organisation and bias</p>
+                    <p align="left">Direct communication with users</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d1.html#/</small></p>
+				</section>
+
+                <section>
+					<h2>On The Second Day ....</h2>
+					<p align="left">Human behaviour and Organisation</p>
+                    <p align="left">Confidence and Perception</p>
+                    <p align="left">Service introduction</p>
+					<p align="left">Technical debt</p>
+                    <p align="left">Feedback loops</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d2.html#/</small></p>
+				</section>
+
+
+                <section data-background="#A3C2FF">
+				<h2>Observability - the story so far</h2>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Availability - monitoring from the perspective of the user</h2>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Performance and Availability are intertwined</h2>
+				</section>
+                <section data-background="#A3C2FF">
+                    <h2>Performance is not the inverse of capacity</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Context switching is bad</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Boredom isn't good either</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Observability should be embedded in the pre-live process</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Triage is a myth</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Monitoring is in itself an architecture problem</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Intermittent events need to be understood</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Some things fail silently</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Some times silence is the indicator of failure</h2>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Monitoring can cause anchoring</h2>
+                </section>
+
+                <section>
+					<h2>Over to you ... three questions</h2>
+					<p align="left">Should we log the usernames of failed login attempts?</p>
+					<p align="left">Should operators be able to view security logs?</p>
+					<p align="left">Which is more sensitive - your demographic record, or the log of who has accessed it?</p>
+				</section>
+
+                <section data-background="#A3C2FF">
+                    <h2>Slow at 9am, slower at 11am and unusable by 2pm</h2>
+                </section>
+
+                <section data-background="#A3C2FF">
+                    <h2>Trends - what do we need to monitor?</h2>
+                    <p align="left">CPUs are fast and plentiful</p>
+                    <p align="left">Memory is available in abundance</p>
+                    <p align="left">I/O have got much, much faster</p>
+                </section>
+                <section data-background="#A3C2FF">
+                    <h2>Trends - what do we need to monitor?</h2>
+                    <p align="left">Everything is distributed</p>
+                    <p align="left">Speed of light is constant</p>
+                    <p align="left">The cloud - latency and hidden drops</p>
+                    <p align="left">Connection state machines everywhere</p>
+                    <p align="left">Lots of weird rules - nagle, tcp timestamps, tcp incast</p>
+                    <p align="left">Security is always being turned on - environments are untrusted</p>
+                </section>
+
+                <section data-background="#A3C2FF">
+				<h2>Some initial thoughts on dashboards</h2>
+				</section>
+
+                <section data-background="#A3C2FF">
+				<img width="800" height="600" data-src="images/ExplMoment.png" alt="Apollo's Explosive Moment" cite="https://www.amazon.co.uk/Behind-Human-Error-David-Woods/dp/0754678342">
+				</section>
+                <section data-background="#A3C2FF">
+				<img width="800" height="600" data-src="images/Expl4sAfter.png" alt="Apollo's Explosive Moment - 4s after" cite="https://www.amazon.co.uk/Behind-Human-Error-David-Woods/dp/0754678342">
+				</section>
+                <section data-background="#A3C2FF">
+				<img width="800" height="600" data-src="images/Expl4mAfter.png" alt="Apollo's Explosive Moment - 4m after" cite="https://www.amazon.co.uk/Behind-Human-Error-David-Woods/dp/0754678342">
+				</section>
+
+                <section>
+					<h2>Over to you ... design a monitoring dashboard</h2>
+					<p align="left">Should we log the usernames of failed login attempts?</p>
+					<p align="left">Should operators be able to view security logs?</p>
+					<p align="left">Which is more sensitive - your demographic record, or the log of who has accessed it?</p>
+				</section>
+
+                <section data-background="#A3C2FF">
+				<img width="800" height="500" data-src="images/MonitorBasicAverage.png">
+				</section>
+
+                <section data-background="#A3C2FF">
+				<img width="800" height="500" data-src="images/MonitorBasicAverageSite.png">
+				</section>
+
+                <section data-background="#A3C2FF">
+				<img width="800" height="500" data-src="images/MonitorDetailAverageSite.png">
+				</section>
+
+                <section data-background="#A3C2FF">
+				<img width="800" height="500" data-src="images/MonitorAverageBreakdown.png">
+				</section>
+
+                <section data-background="#A3C2FF">
+				<img width="800" height="500" data-src="images/MonitorUserExperienceProportion.png">
+				</section>
+
+                <section data-background="#A3C2FF">
+				<img width="800" height="500" data-src="images/MonitorUserExperienceTransaction.png">
+				</section>
+
+                <section data-background="#A3C2FF">
+				<img width="800" height="500" data-src="images/AllClusterTransactionExperience.png">
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Observability patterns</h2>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Monitor from the perspective of the user</h2>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Have artificial users as a control</h2>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Trace interactions through the system</h2>
+				</section>
+
+                <section data-background="#E5E37B">
+				<h2>Be able to flexibly divide - by stack, by stage, by site, by type</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>Use precise language</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>Monitor the whole and the parts - from one place</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>Place observabiliity on the architecure agenda</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>Write and prioritise operator stories</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>If you must send alerts - send context too</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>Maps, traffic lights, gauges - time is a vital dimension</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+				<h2>Be ready for deep inspection</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+                <h2>Own the security policy</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+                <h2>Architect things that are easy to monitor</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+                <h2>Make events self-describing</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+                <h2>Treat an absence of oddities as a shortfall in monitoring</h2>
+                </section>
+
+                <section data-background="#E5E37B">
+                <h2>Rehearse at every opportunity</h2>
+                </section>
+
+                <section>
+					<h2>On the final day</h2>
+                    <p align="left">A review of broader patterns and anti-patterns</p>
+					<p align="left">Example service model in detail</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d4.html#/</small></p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
