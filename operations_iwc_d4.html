@@ -1,0 +1,424 @@
+﻿<!doctype html>
+<html lang="en">
+<style>
+.row{
+display: flex;
+}
+.column{
+flex: 1;
+}
+</style>
+
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Operational Excellence</title>
+
+		<meta name="description" content="A set of ideas around r-thinking and re-shaping operations">
+		<meta name="author" content="Martin Sumner">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+				<h2>Operational Excellence - Day 4</h2>
+				</section>
+				<section>
+					<h2>Today we will cover ....</h2>
+                    <p align="left">Day 3 Review</p>
+					<p align="left">Bibliography</p>
+                    <p align="left">Patterns</p>
+                    <p align="left">Example Model</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d4.html#/</small></p>
+				</section>
+
+                <section>
+					<h2>On The First Day ....</h2>
+					<p align="left">Parallels from Agile for Improvement</p>
+					<p align="left">Terminology is simplistic</p>
+                    <p align="left">Needs are user-driven and evolving</p>
+                    <p align="left">Measuring flow is important</p>
+					<p align="left">Adaptability to confusing and unexpected events</p>
+                    <p align="left">Unavailability - process, organisation and bias</p>
+                    <p align="left">Direct communication with users</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d1.html#/</small></p>
+				</section>
+
+                <section>
+					<h2>On The Second Day ....</h2>
+					<p align="left">Human behaviour and Organisation</p>
+                    <p align="left">Confidence and Perception</p>
+                    <p align="left">Service introduction</p>
+					<p align="left">Technical debt</p>
+                    <p align="left">Feedback loops</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d2.html#/</small></p>
+				</section>
+
+                <section>
+					<h2>On The Third Day ....</h2>
+					<p align="left">Human reaction to observations</p>
+                    <p align="left">What makes a good dashboard</p>
+                    <p align="left">Obervability patterns</p>
+					<p></p>
+					<p><small>http://martinsumner.github.io/presentations/operations_iwc_d3.html#/</small></p>
+				</section>
+                <section>
+					<h2>Maps</h2>
+					<img width="700" height="400" data-src="images/XKCD_Map.png" alt="XKCD" cite="https://xkcd.com/1138/">
+				</section>
+                <section>
+					<h2>Maps</h2>
+					<img width="700" height="400" data-src="images/GoodMap.png" alt="FiveThirtyEight" cite="https://projects.fivethirtyeight.com/2016-election-forecast/">
+				</section>
+                <section>
+					<h2>Maps</h2>
+					<img width="700" height="300" data-src="images/BadMap.png" alt="PHE" cite="https://www.gov.uk/government/publications/covid-19-track-coronavirus-cases">
+				</section>
+
+                <section data-background="#A3C2FF">
+				<h2>Bibliography</h2>
+                <div class="row">
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookMistakes.png">
+                  </div>
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookWetware.png">
+                  </div>
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookRisk.png">
+                  </div>
+                </div>
+				</section>
+
+                <section data-background="#A3C2FF">
+				<h2>Bibliography</h2>
+                <div class="row">
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookDeming.png">
+                  </div>
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookOhno.png">
+                  </div>
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookPoppiendeck.png">
+                  </div>
+                </div>
+				</section>
+
+                <section data-background="#A3C2FF">
+				<h2>Bibliography</h2>
+                <div class="row">
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookNygard.png">
+                  </div>
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookScalability.png">
+                  </div>
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookErlang.png">
+                  </div>
+                </div>
+				</section>
+
+                <section data-background="#A3C2FF">
+				<h2>Bibliography</h2>
+                <div class="row">
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookNormalAccidents.png">
+                  </div>
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookHumanError.png">
+                  </div>
+                  <div class="column">
+                    <img width="200" height="300" data-src="images/BookSRE.png">
+                  </div>
+                </div>
+				</section>
+
+
+
+				<section data-background="#A3C2FF">
+				<h2>What can we do better</h2>
+				</section>
+				<section data-background="#A3C2FF">
+				<h2>Build</h2>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Relative non-functional priorities</h2>
+					<img width="600" height="400" data-src="images/AmblerRequirements.png" alt="CHAOS survery" cite="http://www.agilemodeling.com/essays/examiningBRUF.htm">
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Relative non-functional priorities</h2>
+					<p align="left">Balance required - must still fail cheaply</p>
+                    <p align="left">Balance required - complexity trade-off</p>
+                    <p align="left">Balance required - perception and trade-offs</p>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Relative non-functional priorities</h2>
+					<img width="700" height="400" data-src="images/SpineIRelativePriority.png" alt="Spine I relative priorities - Spine II SAD">
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Relative non-functional priorities</h2>
+					<img width="700" height="400" data-src="images/SpineIIRelativePriorityp1.png" alt="Spine II relative priorities - Spine II SAD">
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Relative non-functional priorities</h2>
+					<img width="700" height="400" data-src="images/SpineIIRelativePriorityp2.png" alt="Spine II relative priorities - Spine II SAD">
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Minimum Viable Standards</h2>
+					<p align="left">Automated tests</p>
+                    <p align="left">Code standards and peer review</p>
+                    <p align="left">A mechanism for consistent deployment</p>
+                    <p align="left">Minimalist building blocks</p>
+                    <p align="left">... To determine debt not success</p>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Trade-offs in development</h2>
+					<p align="left">Log-driven development</p>
+					<p align="left">Intermittently failing system tests</p>
+                    <p align="left">Functionally complex volume tests</p>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Trade-offs in development</h2>
+					<p align="left">Building blocks, not magic boxes</p>
+                    <p align="left">Async message patterns, the actor model</p>
+                    <p align="left">Eventual consistency</p>
+					<p align="left">Nygard patterns</p>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Trade-offs in development</h2>
+					<p align="left">Standardise a communication framework</p>
+                    <p align="left">Build the framework into continuous delivery</p>
+                    <p align="left">Apply security within the framework</p>
+                    <p align="left">Add diagnostics to the framework</p>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Invest in simplicity</h2>
+					<blockquote cite="https://en.wikipedia.org/wiki/No_Silver_Bullet"><small>
+                    <p>&ldquo;Whereas the difference between poor conceptual designs and good ones may lie in the soundness of design method, the difference between good designs and great ones surely does not.</p>
+					<p>Great designs come from great designers.</p>
+					<p>... very best designers produce structures that are faster, smaller, simpler, cleaner, and produced with less effort. &rdquo;</p>
+                	</blockquote>
+					<p><small>Fred Brooks, No Silver Bullet, 1986</small></p></small>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Invest in simplicity</h2>
+					<p align="left">Finding the simplest path to most destinations</p>
+					<img width="700" height="400" data-src="images/ChooseBoringTech.png" alt="Map Problems to Few Solutions" cite="http://mcfunley.com/choose-boring-technology">
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Design-in a Sanctuary Process</h2>
+					<img width="800" height="350" data-src="images/datacenter_scale.png" alt="XKCD 1737" cite="https://xkcd.com/1737">
+				</section>
+				<section data-background="#A3C2FF">
+				    <h2>Manage a Service Model as an uncertain requirement</h2>
+                    <p align="left">Team size must be part of the target</p>
+                    <p align="left">Constraints may pre-exist</p>
+                    <p align="left">Infrastructure choices should not be abstract</p>
+				</section>
+                <section data-background="#A3C2FF">
+				    <h2>Avoid too much sunk cost</h2>
+                    <p align="left">Use open source</p>
+				</section>
+                <section data-background="#A3C2FF">
+				    <h2>Avoid too much sunk cost</h2>
+                    <p align="left">Defer user research</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Introduction</h2>
+				</section>
+                <section data-background="#A3C2FF">
+				    <h2>Documentation quality matters</h2>
+                    <p align="left">SAD + KADs</p>
+                    <p align="left">Service Model</p>
+                    <p align="left">Security Policy</p>
+                    <p align="left">KOPs</p>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Preparing for live</h2>
+					<p align="left">Look hard for edge cases, smooth them out</p>
+					<p align="left">Rehearse responding to the unexpected</p>
+					<p align="left">Don't lump activity at the end</p>
+                    <p align="left">Don't alienate third parties</p>
+				</section>
+				<section data-background="#A3C2FF">
+					<h2>Iterate if possible</h2>
+                    <p align="left">Assess if something is better than nothing</p>
+					<p align="left">RO go live - lazy data migrations</p>
+                    <p align="left">Avoid complexity at stressful time</p>
+                    <p align="left">Don't offload planning</p>
+                    <p align="left">Make plans dynamic</p>
+				</section>
+                <section data-background="#A3C2FF">
+					<h2>Keep people present</h2>
+					<p align="left">The project needs them</p>
+					<p align="left">They need to experience operations</p>
+                    <p align="left">Prepare for the shock of live ...</p>
+                    <p align="right">... Plan for how it will impact people</p>
+                    <p align="right">Train and rehearse</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+					<h2>Be ready to change</h2>
+					<p align="left">Continuously improve continuous delivery</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Operations</h2>
+				</section>
+
+                <section data-background="#A3C2FF">
+				    <h2>Documentation quality still matters</h2>
+                    <p align="left">KOP improvement</p>
+                    <p align="left">Capacity reviews</p>
+                    <p align="left">SLO reports</p>
+                    <p align="left">Incident retrospective</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Use the sanctuary process</h2>
+                <p align="left"> ... even when it isn't necessary</p>
+                <p align="left"> ... even when it probably won't work</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+    				<h2>Stop guessing</h2>
+                    <p align="left">Invert Lines</p>
+                    <p align="left">Recover</p>
+                    <p align="left">Five Whys</p>
+                    <p align="left">Be the Bookie</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Communicate directly</h2>
+                <p align="left">Remove distance</p>
+                <p align="left">Remove conflict from open discussion</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Audit what happens</h2>
+                <p align="left">Universal detection is a better goal than partial prevention</h2>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Enforce stop and think before action</h2>
+                <p align="left">... (other than sanctuary process)</p>
+                <p align="left">... and not just stop</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Five whys behaviour</h2>
+                <p align="left">Not just technology</p>
+                <p align="left">Stupidity is not an explanation</p>
+                <p align="left">Root cause isn't helpful</p>
+                <p align="left">Changing the response is normally better ..</p>
+                <p align="right">... than changing the trigger</p>
+				</section>
+
+                <section data-background="#A3C2FF">
+				<h2>Review</h2>
+                <p align="left">Show and tell - incidents, problems</p>
+                <p align="left">Retrospectives</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Stop starting and start finishing</h2>
+                <p align="left">Address technical debt in series not in parallel</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Mine the data</h2>
+                <p align="left">Capacity reporting needs to find strange limits</p>
+                <p align="left">Collate and investigate anecdocatal evidence</p>
+				</section>
+
+				<section data-background="#A3C2FF">
+				<h2>Maintain cleanliness</h2>
+                <p>Other errors are incident red herrings<p>
+				</section>
+
+                <section data-background="#E6E68A">
+				<h2>Example Service Model</h2>
+				</section>
+
+                <section data-background="#E6E68A">
+				<h2>What makes it anachronistic?</h2>
+                <p align="left">Should more testing be done in production?</p>
+                <p align="left">Should it be on the cloud?</p>
+                <p align="left">Should the TechOps role be removed?</p>
+				</section>
+
+                <section>
+                    <h2>Thank-You</h2>
+                    <img width="600" height="450" data-src="images/thank-you.jpg"/>
+                    <p>@masleeds</p>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
